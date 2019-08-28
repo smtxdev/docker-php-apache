@@ -19,6 +19,7 @@ RUN apt-get update && apt-get install -qy \
         apache2-dev \
         gnupg \
         libzip-dev \
+        graphicsmagick-imagemagick-compat \
         libmagickwand-dev \
     && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ --with-png-dir=/usr/include/
