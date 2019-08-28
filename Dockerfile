@@ -12,7 +12,7 @@ RUN apt-get update && apt-get install -qy \
         libpng-dev \
         libxml2-dev \
         libicu-dev \
-        ssmtp \
+        msmtp \
         git \
         zip \
         curl \
@@ -42,7 +42,6 @@ RUN if [ $(echo "$PHP_VERSION" | tr -d '.' | head -c 2 ) -lt 70 ]; then docker-p
 RUN if [ $(echo "$PHP_VERSION" | tr -d '.' | head -c 2 ) -lt 70 ]; then docker-php-ext-install pdo; fi
 RUN if [ $(echo "$PHP_VERSION" | tr -d '.' | head -c 2 ) -lt 70 ]; then docker-php-ext-install mbstring; fi
 RUN if [ $(echo "$PHP_VERSION" | tr -d '.' | head -c 2 ) -lt 72 ]; then docker-php-ext-install mcrypt; fi
-RUN sed -E 's/^#(FromLineOverride=).*$/\1YES/' -i /etc/ssmtp/ssmtp.conf
 RUN mkdir -p /usr/local/opt/rpaf
 ADD https://github.com/gnif/mod_rpaf/archive/stable.zip /usr/local/opt/rpaf
 RUN cd /usr/local/opt/rpaf && unzip stable.zip
