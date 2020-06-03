@@ -1,8 +1,4 @@
-# Main Dockerfile. Only edit this Dockerfile.
-# If you make changes here then copy this file over to all other folders which contain a Dockerfile.
-# Make sure you just change the ARG instruction in the other Dockerfiles.
-# And of course do not copy this comment into the other Dockerfiles.
-ARG PHP_VERSION=7
+ARG PHP_VERSION=7.4
 FROM php:${PHP_VERSION}-apache
 ENV TZ "Europe/Berlin"
 RUN apt-get update && apt-get install -qy \
@@ -25,7 +21,7 @@ RUN apt-get update && apt-get install -qy \
         graphicsmagick-imagemagick-compat \
         libmagickwand-dev \
     && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ --with-png-dir=/usr/include/
+RUN docker-php-ext-configure gd --with-freetype=/usr/include/ --with-jpeg=/usr/include/
 RUN docker-php-ext-install gd
 RUN docker-php-ext-install zip
 RUN docker-php-ext-install intl

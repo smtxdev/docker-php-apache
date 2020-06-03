@@ -1,4 +1,3 @@
-# Do not change anything here except ARG. Real changes only in the main Dockerfile.
 ARG PHP_VERSION=7.0
 FROM php:${PHP_VERSION}-apache
 ENV TZ "Europe/Berlin"
